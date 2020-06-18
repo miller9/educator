@@ -1,4 +1,5 @@
 <nav class="nav bg-light padding">
+
   <li class="nav-item">
     <%= link_to "Inicio", root_path, class:"nav-link" %>
   </li>
@@ -8,4 +9,18 @@
   <li class="nav-item">
     <%= link_to "Escribir", new_articles_path, class:"nav-link" %>
   </li>
+
+  <% if educator_signed_in? %>
+    <li class="nav-item">
+      <%= link_to "Cerrar Sesion", destroy_educator_session_path, method: :delete, class:"nav-link" %>
+    </li>
+  <% else %>
+    <li class="nav-item">
+      <%= link_to "Iniciar Sesion", new_educator_session_path, class:"nav-link" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Registro", new_educator_registration_path, class:"nav-link" %>
+    </li>
+  <% end %>
+
 </nav>

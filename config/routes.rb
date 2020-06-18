@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :educators
   root to: 'home#index'
   get "home", to: "home#index"
 
