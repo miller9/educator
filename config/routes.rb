@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get "home", to: "home#index"
 
+  get "articles/educator/:educator_id", to: "articles#from_author"
+
   get "articles", to: "articles#index"
   get "articles/new", to: "articles#new", as: :new_articles
   post "articles", to: "articles#create"

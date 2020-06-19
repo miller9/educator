@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :find_article, except: [:new, :create, :index]
+  before_action :find_article, except: [:new, :create, :index, :from_author]
   before_action :authenticate_educator!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
@@ -35,6 +35,14 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.destroy
     redirect_to root_path
+  end
+
+  def from_author
+    @educator = Educator.find(params[:educator_id])
+  end
+
+  def find_article
+    @article = Article.find(params[:id])
   end
 
 end
