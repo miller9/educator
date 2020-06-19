@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article.update(article_params)
+    @article.save_types # function call to save new 'type_elements'
     redirect_to @article
   end
 
@@ -25,6 +26,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_educator.articles.create(article_params)
+    @article.save_types # function call to save new 'type_elements'
     redirect_to @article
   end
 
@@ -43,7 +45,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title,:content)
+    params.require(:article).permit(:title, :content, :type_elements)
   end
 
 end

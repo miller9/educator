@@ -3,4 +3,13 @@ class Article < ApplicationRecord
   belongs_to :educator
   has_many :has_types
   has_many :types, through: :has_types
+  attr_accessor :type_elements
+
+  def save_types
+    types_array = type_elements.split(",")
+    types_array.each do |type_id|
+      HasType.find_or_create_by(article: self, type_id: type_id)
+    end
+  end
+
 end
