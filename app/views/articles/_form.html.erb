@@ -7,7 +7,14 @@
 
   <div class="field">
     <%=form.label :type_elements %>
-    <%=form.text_field :type_elements %>
+    <div class="row">
+      <% @types.each do |type| %>
+        <label class="col-6 col-sm-4">
+          <%= form.check_box :type_elements, {multiple: true}, type.id, nil %>
+          <%= type.title %>
+        </label>
+      <% end %>
+    </div>
   </div>
 
   <div class = "field">
