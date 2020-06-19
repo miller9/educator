@@ -25,7 +25,9 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.create(title: params[:article][:title], content: params[:article][:content])
+    #@article = Article.create(title: params[:article][:title], content: params[:article][:content])
+    @article = current_educator.articles.create(title: params[:article][:title],
+                          content: params[:article][:content]) # common way through association)
     render json: @article
   end
 
