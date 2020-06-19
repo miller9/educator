@@ -6,11 +6,12 @@
   <li class="nav-item">
     <%= link_to "Articulos", articles_path, class:"nav-link" %>
   </li>
-  <li class="nav-item">
-    <%= link_to "Escribir", new_articles_path, class:"nav-link" %>
-  </li>
+
 
   <% if educator_signed_in? %>
+    <li class="nav-item">
+      <%= link_to "Escribir", new_article_path, class:"nav-link" %>
+    </li>
     <li class="nav-item">
       <%= link_to "Cerrar Sesion", destroy_educator_session_path, method: :delete, class:"nav-link" %>
     </li>
