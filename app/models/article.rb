@@ -6,6 +6,7 @@ class Article < ApplicationRecord
   attr_accessor :type_elements
 
   def save_types
+    return has_types.destroy_all if type_elements.nil? || type_elements.empty?
     type_elements.each do |type_id|
       HasType.find_or_create_by(article: self, type_id: type_id)
     end
