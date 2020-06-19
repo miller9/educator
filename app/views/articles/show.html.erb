@@ -4,6 +4,16 @@
   <div>
     <%= @article.content %>
   </div>
+
+  <div class="margin-top">
+  <p class="label">Tags</p>
+  <% @article.types.each do |type| %>
+    <span class="badge badge-pill padding" style="background-color:<%= type.color %>">
+      <%= link_to type.title, type, class:"text-white" %>
+    </span>
+  <% end %>
+  </div>
+
   <div>
     <p> Escrito por: <strong> <%= @article.educator.email %> </strong>  </p>
   </div>
