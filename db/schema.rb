@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_19_165911) do
+ActiveRecord::Schema.define(version: 2020_06_19_174142) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -64,6 +64,15 @@ ActiveRecord::Schema.define(version: 2020_06_19_165911) do
     t.index ["reset_password_token"], name: "index_educators_on_reset_password_token", unique: true
   end
 
+  create_table "has_types", force: :cascade do |t|
+    t.integer "article_id", null: false
+    t.integer "type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_has_types_on_article_id"
+    t.index ["type_id"], name: "index_has_types_on_type_id"
+  end
+
   create_table "types", force: :cascade do |t|
     t.string "title"
     t.string "color"
@@ -73,4 +82,6 @@ ActiveRecord::Schema.define(version: 2020_06_19_165911) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "educators"
+  add_foreign_key "has_types", "articles"
+  add_foreign_key "has_types", "types"
 end
