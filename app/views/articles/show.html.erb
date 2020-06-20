@@ -15,7 +15,11 @@
   </div>
 
   <div>
-    <p> Escrito por: <strong> <%= @article.educator.email %> </strong>  </p>
+    <p> Escrito por: <strong> <%= @article.educator.email %> </strong>
+      <% if @article.educator.avatar.attached? %>
+        <%= image_tag url_for(@article.educator.avatar), height:30 %>
+      <% end %>
+    </p>
   </div>
   <div>
       <%= link_to "Eliminar el articulo", @article, method: :delete, :class => "btn btn-danger"%>
