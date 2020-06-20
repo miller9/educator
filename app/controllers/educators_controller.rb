@@ -1,8 +1,6 @@
 class EducatorsController < ApplicationController
   before_action :authenticate_educator!
 
-  def edit
-  end
 
   def update
     current_educator.update(educator_params)
@@ -10,6 +8,7 @@ class EducatorsController < ApplicationController
   end
 
   def educator_params
-    params.require(:educator).permit(:avatar)
+    params.require(:educator).permit(:avatar, :first_name, :last_name,
+    :institution, :description, :city, :country)
   end
 end

@@ -6,6 +6,37 @@
   <% end %>
 
   <%= form_with(model: current_educator, local: true) do |form| %>
+
+    <div class="field">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :institution %>
+      <%= form.text_field :institution %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_field :description %>
+    </div>
+
+    <div class="field">
+      <%= form.label :city %>
+      <%= form.text_field :city %>
+    </div>
+
+    <div class="field">
+      <%= form.label :country %>
+      <%= form.text_field :country %>
+    </div>
+
     <div class="field">
       <%= form.label :avatar %>
       <%= form.file_field :avatar %>

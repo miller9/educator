@@ -3,6 +3,8 @@
   <h1> <%=@article.title %> </h1>
   <div>
     <p> Escrito por: <strong> <%= @article.educator.email %> </strong>
+        Educador: <strong> <%= @article.educator.first_name %> </strong>
+        <strong> <%= @article.educator.last_name %> </strong>
       <% if @article.educator.avatar.attached? %>
         <%= image_tag url_for(@article.educator.avatar), height:30 %>
       <% end %>
