@@ -1,2 +1,15 @@
-<h1>Educators#edit</h1>
-<p>Find me in app/views/educators/edit.html.erb</p>
+<div class="small-container center-block">
+  <p class="font-wight-bold text-uppercase margin-top">Editar educador </p>
+
+  <%= form_with(model: current_educator, local: true) do |form| %>
+    <div class="field">
+      <%= form.label :avatar %>
+      <%= form.file_field :avatar %>
+    </div>
+
+    <div class="field">
+      <%= form.submit "Guardar", class:"btn btn-primary" %>
+    </div>
+  <% end %>
+
+</div>
