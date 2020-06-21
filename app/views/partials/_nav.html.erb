@@ -4,7 +4,7 @@
     <%= link_to "Inicio", root_path, class:"nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Articulos", articles_path, class:"nav-link" %>
+    <%= link_to "Artículos", articles_path, class:"nav-link" %>
   </li>
   <li class="nav-item">
     <%= link_to "Condiciones", types_path, class:"nav-link" %>
@@ -13,7 +13,7 @@
 
   <% if educator_signed_in? %>
     <li class="nav-item">
-      <%= link_to "Escribir", new_article_path, class:"nav-link" %>
+      <%= link_to "Crear", new_article_path, class:"nav-link" %>
     </li>
     <li class="nav-item">
       <%= link_to "Mi perfil", perfil_path, class:"nav-link" %>
