@@ -1,12 +1,13 @@
 <div class="small-container center-block">
+  <br>
   <p class="font-wight-bold text-uppercase margin-top">Editar educador </p>
 
   <% if current_educator.avatar.attached? %>
-    <%= image_tag url_for(current_educator.avatar), height:200 %>
+    <%= image_tag url_for(current_educator.avatar), height:200, width:200, class: "rounded-circle" %>
   <% end %>
 
   <%= form_with(model: current_educator, local: true) do |form| %>
-
+    <br>
     <div class="field">
       <%= form.label :first_name %>
       <%= form.text_field :first_name %>
