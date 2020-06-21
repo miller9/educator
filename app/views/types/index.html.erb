@@ -8,8 +8,8 @@
     <thead>
       <tr>
         <br>
-        <th>Nombre</th>
-        <th>Color</th>
+        <!-- <th>Nombre</th> -->
+        <!-- <th>Color</th> -->
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -18,11 +18,12 @@
       <% @types.each do |type| %>
       <td></td>
         <tr>
-          <td><%= type.title %></td>
-          <td><%= type.color %></td>
+          <td><h4><%= type.title %></h4></td>
+          <!-- <td><%= type.color %></td> -->
+
           <td><%= link_to 'Ver', type %></td>
-          <td><%= link_to 'Editar', edit_type_path(type) %></td>
-          <td><%= link_to 'Eliminar', type, method: :delete, data: { confirm: 'Eliminar condición?' } %></td>
+          <!-- <td><%= link_to 'Editar', edit_type_path(type) %></td> -->
+          <!-- <td><%= link_to 'Eliminar', type, method: :delete, data: { confirm: 'Eliminar condición?' } %></td> -->
         </tr>
       <% end %>
     </tbody>
