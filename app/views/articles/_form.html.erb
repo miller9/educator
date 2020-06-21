@@ -1,7 +1,11 @@
 <%= form_with(model: @article, local: true) do |form| %>
 
+  <br>
+  <h1> Crear un artículo </h1>
+
+  <br>
   <div class = "field">
-    <%=form.label :titulo_del_articulo %>
+    <%=form.label :titulo %>
     <%=form.text_field :title %>
   </div>
 
