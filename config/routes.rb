@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :types
   devise_for :educators
-  root to: 'home#index'
+  root to: 'articles#index'
   get "home", to: "home#index"
 
   get "perfil", to:"educators#edit" # =>  get 'educators/edit'
