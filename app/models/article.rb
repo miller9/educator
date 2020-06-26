@@ -3,6 +3,7 @@ class Article < ApplicationRecord
   belongs_to :educator
   has_many :has_types
   has_many :types, through: :has_types
+  has_many :comments
   attr_accessor :type_elements
 
   def save_types

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :articles do
     get "educator/:educator_id", to: "articles#from_author", on: :collection
+    resources :comments
   end
 
 
