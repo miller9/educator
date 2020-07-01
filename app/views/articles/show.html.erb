@@ -26,6 +26,18 @@
   <% end %>
   </div>
 
+  <div>
+    <hr>
+      <h2> Comentarios </h2>
+      <% @article.comments.each do |comment| %>
+        <p>
+          <strong> <%= comment.commenter %> </strong>
+          <%= comment.body %>
+        </p>
+      <% end %>
+    <hr>
+  </div>
+
   <div class="margin-top">
     <h2> Comentar... </h2>
     <%= form_for([@article, @article.comments.build]) do |f| %>
