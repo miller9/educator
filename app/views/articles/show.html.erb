@@ -26,6 +26,23 @@
   <% end %>
   </div>
 
+  <div class="margin-top">
+    <h2> Comentar... </h2>
+    <%= form_for([@article, @article.comments.build]) do |f| %>
+      <p>
+        <%= f.label :nombre %> <br>
+        <%= f.text_field :commenter %>
+      </p>
+      <p>
+        <%= f.label :comentario %> <br>
+        <%= f.text_area :body %>
+      </p>
+      <p>
+        <%= f.submit "Guardar Comentario"%>
+      </p>
+    <% end %>
+  </div>
+
   <div>
   <!-- <%= link_to "Eliminar el artículo", @article, method: :delete %> -->
   <br>
@@ -54,5 +71,7 @@
     <%= link_to 'Volver', articles_path %>
     <!-- <%= link_to "Eliminar el artículo", @article, method: :delete, :class => "btn btn-danger"%> -->
   </div>
+  <br>
+  <br>
 
 </div>
