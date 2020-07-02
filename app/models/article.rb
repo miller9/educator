@@ -1,9 +1,9 @@
 class Article < ApplicationRecord
   has_rich_text :content
   belongs_to :educator
-  has_many :has_types
+  has_many :has_types, dependent: :destroy
   has_many :types, through: :has_types
-  has_many :comments
+  has_many :comments, dependent: :destroy
   attr_accessor :type_elements
 
   def save_types
