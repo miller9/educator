@@ -26,19 +26,21 @@
   <% end %>
   </div>
 
-  <div class="comment-container center-comment">
-    <hr>
-      <h2> Comentarios </h2>
-      <% @article.comments.each do |comment| %>
-        <p>
-          <strong> <%= comment.commenter %> </strong>
-          <%= comment.body %>
-        </p>
-      <% end %>
-    <hr>
-  </div>
+  <% if !(@article.comments.empty?) %>
+    <div class="comment-container center-comment">
+      <hr>
+        <h2> Comentarios </h2> <br>
+        <% @article.comments.each do |comment| %>
+          <p>
+            <strong> <%= comment.commenter %> </strong>
+            <%= comment.body %>
+          </p>
+        <% end %>
+      <hr>
+    </div>
+  <% end %>
 
-  <div class="comment-container center-comment">
+  <div class="comment-container center-comment"> <br>
     <div class="col-sm-12"> <h2> Comentar... </h2> </div>
     <%= form_for([@article, @article.comments.build]) do |f| %>
       <p>
