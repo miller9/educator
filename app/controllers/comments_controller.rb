@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_educator!, only: [:new, :create]
 
   def create
     @article = Article.find(params[:article_id])
