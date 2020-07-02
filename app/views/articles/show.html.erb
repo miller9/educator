@@ -44,13 +44,13 @@
       <p>
         <div class="col-sm-12">
           <%= f.label :nombre %> <br>
-          <%= f.text_field :commenter, placeholder: "Nombre", style: 'width:100%' %>
+          <%= f.text_field :commenter, placeholder: "Nombre", :required => 'required', style: 'width:100%' %>
         </div>
       </p>
       <p>
         <div class="col-sm-12">
           <%= f.label :comentario %> <br>
-          <%= f.text_area :body, placeholder: "Comentar...", style: 'width:100%' %>
+          <%= f.text_area :body, placeholder: "Comentar...", :required => 'required', style: 'width:100%' %>
         </div>
       </p>
       <p>
