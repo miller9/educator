@@ -32,7 +32,9 @@
         <h2> Comentarios </h2> <br>
         <% @article.comments.each do |comment| %>
           <p>
-            <strong> <%= comment.commenter %> </strong>
+            <% if comment.educator.avatar.attached? %>
+              <%= image_tag url_for(comment.educator.avatar), height:30 %>
+            <% end %>
             <strong> <%= comment.educator.first_name %> </strong>
             <%= comment.body %>
           </p>
@@ -46,14 +48,7 @@
     <%= form_for([@article, @article.comments.build]) do |f| %>
       <p>
         <div class="col-sm-12">
-          <%= f.label :nombre %> <br>
-          <%= f.text_field :commenter, placeholder: "Nombre", :required => 'required', style: 'width:100%' %>
-        </div>
-      </p>
-      <p>
-        <div class="col-sm-12">
-          <%= f.label :comentario %> <br>
-          <%= f.text_area :body, placeholder: "Comentar...", :required => 'required', style: 'width:100%' %>
+          <%= f.text_area :body, placeholder: "Escribe un comentario...", :required => 'required', style: 'width:100%' %>
         </div>
       </p>
       <p>
