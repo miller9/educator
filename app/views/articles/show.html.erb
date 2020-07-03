@@ -33,6 +33,7 @@
         <% @article.comments.each do |comment| %>
           <p>
             <strong> <%= comment.commenter %> </strong>
+            <strong> <%= comment.educator.first_name %> </strong>
             <%= comment.body %>
           </p>
         <% end %>
