@@ -1,0 +1,53 @@
+<div class="small-container center-block">
+  <!-- <h1><p class="font-wight-bold text-uppercase margin-top">Editar educador </p></h1> -->
+  <!-- <h1><p class="font-wight-bold margin-top">Editar educador </p></h1> -->
+  <br>
+  <h1>Editar educador</h1>
+
+  <% if current_educator.avatar.attached? %>
+    <%= image_tag url_for(current_educator.avatar), height:200, width:200, class: "rounded-circle" %>
+  <% end %>
+
+  <%= form_with(model: current_educator, local: true) do |form| %>
+    <br>
+    <div class="field">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :institution %>
+      <%= form.text_field :institution %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description, :rows => 10, style: 'width:100%;'%>
+    </div>
+
+    <div class="field">
+      <%= form.label :city %>
+      <%= form.text_field :city %>
+    </div>
+
+    <div class="field">
+      <%= form.label :country %>
+      <%= form.text_field :country %>
+    </div>
+
+    <div class="field">
+      <%= form.label :avatar %>
+      <%= form.file_field :avatar %>
+    </div>
+
+    <div class="field">
+      <%= form.submit "Guardar", class:"btn btn-primary" %>
+    </div>
+  <% end %>
+
+</div>

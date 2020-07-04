@@ -2,11 +2,23 @@
 
   <h1> <%=@article.title %> </h1>
   <div>
+    <p> Compartido por: <strong> <%= @article.educator.first_name %> </strong>
+        <strong> <%= @article.educator.last_name %> </strong>
+        Email: <strong> <%= @article.educator.email %> </strong>
+      <% if @article.educator.avatar.attached? %>
+        <%= image_tag url_for(@article.educator.avatar), height:30, width: 30, class: "rounded-circle" %>
+      <% end %>
+    </p>
+  </div>
+
+  <br>
+  <div>
     <%= @article.content %>
   </div>
 
+  <br>
   <div class="margin-top">
-  <p class="label">Tags</p>
+  <p class="label">Etiquetas:</p>
   <% @article.types.each do |type| %>
     <span class="badge badge-pill padding" style="background-color:<%= type.color %>">
       <%= link_to type.title, type, class:"text-white" %>
@@ -14,11 +26,68 @@
   <% end %>
   </div>
 
-  <div>
-    <p> Escrito por: <strong> <%= @article.educator.email %> </strong>  </p>
+  <% if !(@article.comments.empty?) %>
+    <div class="comment-container center-comment">
+      <hr>
+        <h2> Comentarios </h2> <br>
+        <% @article.comments.each do |comment| %>
+          <p>
+            <% if comment.educator.avatar.attached? %>
+              <%= image_tag url_for(comment.educator.avatar), height:30, width: 30, class: "rounded-circle" %>
+            <% end %>
+            <strong> <%= comment.educator.first_name %> </strong>
+            <%= comment.body %>
+          </p>
+        <% end %>
+      <hr>
+    </div>
+  <% end %>
+
+  <div class="comment-container center-comment"> <br>
+    <div class="col-sm-12"> <h2> Comentar... </h2> </div>
+    <%= form_for([@article, @article.comments.build]) do |f| %>
+      <p>
+        <div class="col-sm-12">
+          <%= f.text_area :body, placeholder: "Escribe un comentario...", :required => 'required', style: 'width:100%' %>
+        </div>
+      </p>
+      <p>
+        <div class="col-sm-12">
+          <%= f.submit "Guardar Comentario"%>
+        </div>
+      </p>
+    <% end %>
   </div>
+
   <div>
-      <%= link_to "Eliminar el articulo", @article, method: :delete, :class => "btn btn-danger"%>
+  <!-- <%= link_to "Eliminar el artículo", @article, method: :delete %> -->
+  <br>
+  <% if current_educator == @article.educator %>
+  <%= link_to 'Eliminar el artículo', '#', "data-toggle"=>"modal", "data-target" => "#delete-#{@article.id}" %>
+      <div class="modal fade" id="delete-<%= @article.id %>" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">Confirmación</button>
+            </div>
+            <div class="modal-body">
+              <p>Desea borrar el artículo?</p>
+            </div>
+            <div class="modal-footer">
+              <div class="modal-footer">
+                <%= link_to 'Eliminar', article_path(@article), method: :delete, :class => 'btn btn-danger' %>
+                  <a href="#" data-dismiss="modal" class="btn btn-warning">Cancelar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+     </div>
+    |
+    <% end %>
+    <%= link_to 'Volver', articles_path %>
+    <!-- <%= link_to "Eliminar el artículo", @article, method: :delete, :class => "btn btn-danger"%> -->
   </div>
+  <br>
+  <br>
 
 </div>

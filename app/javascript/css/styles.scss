@@ -10,9 +10,20 @@
 }
 .center-block{
   margin: 0 auto;
+  text-align:justify;
 }
 .padding{
   padding: 10px 15px;
+}
+.comment-container{
+  width: 100%;
+  max-width: 700px;
+}
+.center-comment{
+  margin: 0 auto;
+  text-align:justify;
+  //border:1px dotted #000;
+  padding:8px;
 }
 
 .margin-top{

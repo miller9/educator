@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_19_174142) do
+ActiveRecord::Schema.define(version: 2020_07_03_170728) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,17 @@ ActiveRecord::Schema.define(version: 2020_06_19_174142) do
     t.index ["educator_id"], name: "index_articles_on_educator_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "commenter"
+    t.text "body"
+    t.integer "article_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "educator_id", default: 1, null: false
+    t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["educator_id"], name: "index_comments_on_educator_id"
+  end
+
   create_table "educators", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -60,6 +71,12 @@ ActiveRecord::Schema.define(version: 2020_06_19_174142) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "institution"
+    t.string "city"
+    t.string "country"
+    t.text "description"
     t.index ["email"], name: "index_educators_on_email", unique: true
     t.index ["reset_password_token"], name: "index_educators_on_reset_password_token", unique: true
   end
@@ -82,6 +99,8 @@ ActiveRecord::Schema.define(version: 2020_06_19_174142) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "educators"
+  add_foreign_key "comments", "articles"
+  add_foreign_key "comments", "educators"
   add_foreign_key "has_types", "articles"
   add_foreign_key "has_types", "types"
 end

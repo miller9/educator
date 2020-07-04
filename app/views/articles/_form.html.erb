@@ -1,12 +1,17 @@
 <%= form_with(model: @article, local: true) do |form| %>
 
+  <br>
+  <h1> Crear un artículo </h1>
+
+  <br>
   <div class = "field">
-    <%=form.label :title %>
+    <%=form.label :titulo %>
     <%=form.text_field :title %>
   </div>
 
+  <br>
   <div class="field">
-    <%=form.label :type_elements %>
+    <%=form.label :condiciones_relacionadas %>
     <div class="row">
       <% @types.each do |type| %>
         <label class="col-6 col-sm-4">
@@ -17,13 +22,15 @@
     </div>
   </div>
 
+  <br>
   <div class = "field">
-    <%=form.label :content %>
+    <%=form.label :contenido %>
     <%=form.rich_text_area :content %>
   </div>
 
+  <br>
   <div>
-    <%=form.submit %>
+    <%=form.submit "Crear artículo" %>
   </div>
 
 <% end %>

@@ -5,5 +5,6 @@ class Educator < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :articles
   has_one_attached :avatar
+  has_many :comments
 
 end

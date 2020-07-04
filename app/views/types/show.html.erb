@@ -1,5 +1,7 @@
 <!-- Al entrar a un type, mostrar los articulos que tiene asociados -->
 <div class="large-container center-block">
-  <h1> Articulos publicados en <%= @type.title %> </h1>
+  <h1> Articulos relacionados con <%= @type.title %> </h1>
   <%= render @type.articles %>
+  <br>
+  <%= link_to 'Volver', types_path %>
 </div>
