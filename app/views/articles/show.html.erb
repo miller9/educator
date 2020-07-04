@@ -6,7 +6,7 @@
         <strong> <%= @article.educator.last_name %> </strong>
         Email: <strong> <%= @article.educator.email %> </strong>
       <% if @article.educator.avatar.attached? %>
-        <%= image_tag url_for(@article.educator.avatar), height:30 %>
+        <%= image_tag url_for(@article.educator.avatar), height:30, width: 30, class: "rounded-circle" %>
       <% end %>
     </p>
   </div>
@@ -33,7 +33,7 @@
         <% @article.comments.each do |comment| %>
           <p>
             <% if comment.educator.avatar.attached? %>
-              <%= image_tag url_for(comment.educator.avatar), height:30 %>
+              <%= image_tag url_for(comment.educator.avatar), height:30, width: 30, class: "rounded-circle" %>
             <% end %>
             <strong> <%= comment.educator.first_name %> </strong>
             <%= comment.body %>
