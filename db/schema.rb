@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_20_025119) do
+ActiveRecord::Schema.define(version: 2020_07_06_214351) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,17 @@ ActiveRecord::Schema.define(version: 2020_06_20_025119) do
     t.index ["educator_id"], name: "index_articles_on_educator_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "commentable_type", null: false
+    t.integer "commentable_id", null: false
+    t.integer "educator_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["educator_id"], name: "index_comments_on_educator_id"
+  end
+
   create_table "educators", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -88,6 +99,7 @@ ActiveRecord::Schema.define(version: 2020_06_20_025119) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "educators"
+  add_foreign_key "comments", "educators"
   add_foreign_key "has_types", "articles"
   add_foreign_key "has_types", "types"
 end
