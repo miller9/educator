@@ -1,0 +1,21 @@
+<div>
+  <% if comment.educator.avatar.attached? %>
+    <%= image_tag url_for(comment.educator.avatar), height:30, width: 30, class: "rounded-circle" %>
+  <% end %>
+  <strong> <%= comment.educator.first_name %> </strong>
+
+  <ul>
+    <%= comment.content %> -
+    <div class="nested-comment-inline">
+      <%= form_for [comment, Comment.new] do |f| %>
+        <%= f.text_area :content, placeholder: "Escribe una respuesta" %>
+        <%= f.submit "Responder"  %>
+      <% end %>
+    </div>
+  </ul>
+
+  <ul>
+    <%= render partial: 'comments/comment', collection: comment.comments %>
+  </ul>
+
+</div>
